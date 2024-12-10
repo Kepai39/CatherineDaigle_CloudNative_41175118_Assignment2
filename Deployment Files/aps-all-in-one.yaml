@@ -500,7 +500,7 @@ spec:
   selector:
     app: store-admin
   type: LoadBalancer # Expose service externally via load balancer
-
+---
 # Deployment for AI Service
 apiVersion: apps/v1
 kind: Deployment
