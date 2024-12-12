@@ -41,7 +41,7 @@ Step2:
 
 ## Setting up Azure Service Bus:
 
-## option one microsoft entra
+### option one microsoft entra
 Step1: using Azure CLI  create the service bus:
 ```
 az login
@@ -63,11 +63,17 @@ Step 3: Get Connection Info:
 HOSTNAME=$(az servicebus namespace show --name A2ServiceBus --resource-group CloudNativeA2 --query serviceBusEndpoint -o tsv | sed 's/https:\/\///;s/:443\///')
 ```
 
-# option 2 SAS
+### option 2 SAS  (GO WITH OPTION 2, option 1 does not work)
+Step2:  getting service bus SAS passwords/connections.
+```
 HOSTNAME=$(az servicebus namespace show --name A2ServiceBus  --resource-group CloudNativeA2  --query serviceBusEndpoint -o tsv | sed 's/https:\/\///;s/:443\///')
 
 PASSWORD=$(az servicebus queue authorization-rule keys list --namespace-name A2ServiceBus --resource-group CloudNativeA2 --queue-name orders --name sender --query primaryKey -o tsv)
+```
 
+
+Step3:
+Change the deployment .yaml file with the appropriate environment. Makeline Service should have an amqp connection string connecting it to Azure Service bus.
 
 
 # Deploying AI
