@@ -20,8 +20,18 @@ Step 2: Create Nodes:
 
 Step 3: Review & Create
 
+Step4: Connect to kubernetes:
+```
+az account set --subscription 80a95cf9-65b4-4bbe-9645-ce60c00e7572
+az aks get-credentials --resource-group CloudNativeA2 --name BestBuyCluster --overwrite-existing
+```
+
 ### Getting the Kube config
-     ```cat ~/.kube/config | base64 -b 0 > kube_config_base64.txt``` (-b is for mac, use -w for windows)
+Step1: 
+```cat ~/.kube/config | base64 -b 0 > kube_config_base64.txt``` (-b is for mac, use -w for windows)
+
+Step2: 
+- Apply the kubconfig to each KUBE_CONFIG_DATA secret in the secrets and variables.
 
 ## Setting up Azure Service Bus:
 Step1: using Azure CLI  create the service bus:
