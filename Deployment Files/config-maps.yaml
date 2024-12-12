@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: rabbitmq-enabled-plugins
+  name: azure-servicebus-config
 data:
-  rabbitmq_enabled_plugins: |
-    [rabbitmq_management,rabbitmq_prometheus,rabbitmq_amqp1_0].
+  SERVICE_BUS_CONNECTION_STRING: "amqps://RootManageSharedAccessKey:RSeofSd2DfCjSg08sTFpD%2FfrTXlFdBwlu%2BASbMWp7t4%3D@a2servicebus.servicebus.windows.net:5671/?verify=verify_none"
+  QUEUE_NAME: "orders"
