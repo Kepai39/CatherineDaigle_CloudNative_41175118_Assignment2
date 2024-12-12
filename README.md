@@ -7,6 +7,7 @@
 
 
 # Application and Architecture Explanation:
+The Architecture above is similar to the Algonquin petstore, however the only difference being that rabbitmq is replaced with Azure Service Bus as a Queuing system.  Each service remains the same although some edits were made to fit Bestbuys aesthetic and purpose.  For example, Product Service's data.rs has been changed to feature tech products.  ai-service description_generator.py and image_generator.py was changed to fit descriptions to tech products.  Lastly, the store front and store admin webpage and styles changed to fit Bestbuy.
 
 
 # Deployment Instructions:
