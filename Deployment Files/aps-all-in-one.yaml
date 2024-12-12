@@ -176,22 +176,6 @@ spec:
             failureThreshold: 5
             initialDelaySeconds: 3
             periodSeconds: 3
-      initContainers: # Initialization container to wait for RabbitMQ
-        - name: wait-for-rabbitmq
-          image: busybox
-          command:
-            [
-              "sh",
-              "-c",
-              "until nc -zv rabbitmq 5672; do echo waiting for rabbitmq; sleep 2; done;",
-            ]
-          resources:
-            requests:
-              cpu: 1m
-              memory: 50Mi
-            limits:
-              cpu: 100m
-              memory: 256Mi
 ---
 # Service for Order Service
 apiVersion: v1

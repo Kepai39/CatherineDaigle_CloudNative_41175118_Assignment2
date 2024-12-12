@@ -45,16 +45,14 @@ Step1: using Azure CLI  create the service bus:
 az login
 az servicebus namespace create --name A2ServiceBus --resource-group CloudNativeA2
 az servicebus queue create --name orders --namespace-name A2ServiceBus --resource-group CloudNativeA2
-```
 Pick Microsoft Entra Identity Workload
+```
 
 Step2: Assign azure service bus sender:
 ```
-az servicebus queue authorization-rule create --name sender --namespace-name A2ServiceBus --resource-group CloudNativeA2 --queue-name orders --rights Send
-
-HOSTNAME=$(az servicebus namespace show --name A2ServiceBus --resource-group CloudNativeA2 --query serviceBusEndpoint -o tsv | sed 's/https:\/\///;s/:443\///')
-
-PASSWORD=$(az servicebus queue authorization-rule keys list --namespace-name A2ServiceBus --resource-group CloudNativeA2 --queue-name orders --name sender --query primaryKey -o tsv)
+PRINCIPALID=$(az ad signed-in-user show --query objectId -o tsv)
+SERVICEBUSBID=$(az servicebus namespace show --name A2ServiceBus --resource-group CloudNativeA2 --query id -o tsv)
+az role assignment create --role "Azure Service Bus Data Sender" --assignee $PRINCIPALID --scope $SERVICEBUSBID
 
 ```
 
