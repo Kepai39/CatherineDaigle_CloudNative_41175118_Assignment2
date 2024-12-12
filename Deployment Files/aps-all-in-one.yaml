@@ -531,9 +531,9 @@ spec:
             - name: AZURE_OPENAI_DEPLOYMENT_NAME # required if using Azure OpenAI
               value: "gpt-4-deployment"
             - name: AZURE_OPENAI_ENDPOINT # required if using Azure OpenAI
-              value: "https://gpt-4-deployment.openai.azure.com/"
+              value: "https://a2openai2.openai.azure.com/"
             - name: AZURE_OPENAI_DALLE_ENDPOINT
-              value: "https://dalle-3-deployment.openai.azure.com/"
+              value: "https://a2openai2.openai.azure.com/"
             - name: AZURE_OPENAI_DALLE_DEPLOYMENT_NAME
               value: "dalle-3-deployment"
             - name: OPENAI_API_KEY # always required
