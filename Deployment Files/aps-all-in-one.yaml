@@ -140,10 +140,18 @@ spec:
           ports:
             - containerPort: 3000 # Order service listens on this port
           env: # Environment variables for configuration
-            - name: USE_WORKLOAD_IDENTITY_AUTH
-              value: "true"
-            - name: AZURE_SERVICEBUS_FULLYQUALIFIEDNAMESPACE
+            - name: ORDER_QUEUE_HOSTNAME
               value: "A2ServiceBus.servicebus.windows.net"
+            - name: ORDER_QUEUE_PORT
+              value: "5671"
+            - name: ORDER_QUEUE_USERNAME
+              value: "sender"
+            - name: ORDER_QUEUE_PASSWORD
+              value: "E2DENIdm0+ynC0W04wsVeTbCRhath8CNf+ASbOT1SQM="
+            - name: ORDER_QUEUE_TRANSPORT
+              value: "tls"
+            - name: ORDER_QUEUE_RECONNECT_LIMIT
+              value: "10"
             - name: ORDER_QUEUE_NAME
               value: "orders"
             - name: FASTIFY_ADDRESS
@@ -214,8 +222,8 @@ spec:
           ports:
             - containerPort: 3001 # Makeline service listens on this port
           env: # Environment variables for configuration
-            - name: ORDER_QUEUE_HOSTNAME
-              value: "A2ServiceBus.servicebus.windows.net"
+            - name: ORDER_QUEUE_URI
+              value: "Endpoint=sb://a2servicebus.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=RSeofSd2DfCjSg08sTFpD/frTXlFdBwlu+ASbMWp7t4="
             - name: ORDER_QUEUE_PORT
               value: "5671"
             - name: ORDER_QUEUE_USERNAME
