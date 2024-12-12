@@ -47,7 +47,6 @@ Step1: using Azure CLI  create the service bus:
 az login
 az servicebus namespace create --name A2ServiceBus --resource-group CloudNativeA2
 az servicebus queue create --name orders --namespace-name A2ServiceBus --resource-group CloudNativeA2
-Pick Microsoft Entra Identity Workload
 ```
 
 Step2: Assign azure service bus sender:
@@ -140,3 +139,21 @@ Step 7: in terminal input the following when kubernetes deployed for the AI:
 | store-admin | https://hub.docker.com/layers/kepai39/catherinedaigle-a2-store-admin/latest/images/sha256:f5f8735f7665bb2480d5e7bd13b8aeb3067469b5a4d1c3d4ff12dba48fe200c7?uuid=eb959240-9a0e-4383-b399-16f46df8de41%0A |
 | store-front | https://hub.docker.com/layers/kepai39/catherinedaigle-a2store-front/latest/images/sha256:2cf2fa9fe75d385ea40fe282849a303be940feae10adebf37990ae06dd0f2401?uuid=eb959240-9a0e-4383-b399-16f46df8de41%0A |
 
+# Issues and Limitations:
+There were three main issues and limitations that took much of my time (and quite a bit of Azure credit as I was trying hard and long to solve them running aks)  
+
+1: Azure Service Bus;  Was not a huge issue but to slowly realize the scope on what must be replaced different from rabbitmq.  I had trouble with Option one connecting via Entra Id.  I suspect it is not possible since one must require administrative positions to obtain the PRINCIPALID.  I had to then switch to Option 2 which then realized Github stopped prohibits secrets from being commited
+Solution:  I had to bypass and expose the secret to allow the communication of Azure service bus and managed to get it working.
+
+
+2: CI/CD  I had issues with the CI/CD pipeline because at one point my KUBE_CONFIG was getting too large and github would not accept it as a secret.
+
+Solution: I had to physically delete the config file within my computer.
+
+
+3:  AI Services This problem was the largest issue of them all, and although i was able to get AI services to Kubernetes, but once on there it would never finish deploying giving a CrashLoopBackOff.  The issue with this error is that it is extremely broad and there is a multitude of reasons that can cause it namely:
+- Connection errors
+- config map isnt correct
+- connection string isnt correct
+
+I have yet to figure out a solution to this error.  It is quite odd since I was able to use AI when writing Lab8.
