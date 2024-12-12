@@ -157,3 +157,6 @@ Solution: I had to physically delete the config file within my computer.
 - connection string isnt correct
 
 I have yet to figure out a solution to this error.  It is quite odd since I was able to use AI when writing Lab8.
+
+
+Youtube:  
