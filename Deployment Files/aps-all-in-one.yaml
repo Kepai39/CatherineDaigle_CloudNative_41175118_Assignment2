@@ -517,7 +517,7 @@ spec:
             - name: USE_AZURE_OPENAI # set to True for Azure OpenAI, False for Public OpenAI
               value: "True"
             - name: AZURE_OPENAI_API_VERSION
-              value: "2024-5-01-preview"
+              value: "2024-07-01-preview"
             - name: AZURE_OPENAI_DEPLOYMENT_NAME # required if using Azure OpenAI
               value: "gpt-4-deployment"
             - name: AZURE_OPENAI_ENDPOINT # required if using Azure OpenAI
