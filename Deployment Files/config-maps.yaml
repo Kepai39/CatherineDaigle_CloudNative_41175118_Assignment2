@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: azure-servicebus-config
 data:
-  SERVICE_BUS_CONNECTION_STRING: "amqps://RootManageSharedAccessKey:RSeofSd2DfCjSg08sTFpD%2FfrTXlFdBwlu%2BASbMWp7t4%3D@a2servicebus.servicebus.windows.net:5671/?verify=verify_none"
+  SERVICE_BUS_CONNECTION_STRING: "Endpoint=sb://a2servicebus.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=RSeofSd2DfCjSg08sTFpD/frTXlFdBwlu+ASbMWp7t4="
   QUEUE_NAME: "orders"
