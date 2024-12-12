@@ -214,10 +214,18 @@ spec:
           ports:
             - containerPort: 3001 # Makeline service listens on this port
           env: # Environment variables for configuration
-            - name: USE_WORKLOAD_IDENTITY_AUTH
-              value: "true"
-            - name: AZURE_SERVICEBUS_FULLYQUALIFIEDNAMESPACE
+            - name: ORDER_QUEUE_HOSTNAME
               value: "A2ServiceBus.servicebus.windows.net"
+            - name: ORDER_QUEUE_PORT
+              value: "5671"
+            - name: ORDER_QUEUE_USERNAME
+              value: "sender"
+            - name: ORDER_QUEUE_PASSWORD
+              value: ""
+            - name: ORDER_QUEUE_TRANSPORT
+              value: "tls"
+            - name: ORDER_QUEUE_RECONNECT_LIMIT
+              value: "10"
             - name: ORDER_QUEUE_NAME
               value: "orders"
             - name: ORDER_DB_URI
