@@ -93,11 +93,11 @@ spec:
               mountPath: /etc/rabbitmq/enabled_plugins
               subPath: enabled_plugins
       volumes:
-        - name: rabbitmq-enabled-plugins
+        - name: azure-servicebus-config
           configMap:
             name: azure-servicebus-config
             items:
-              - key: rabbitmq_enabled_plugins
+              - key: azure-servicebus-config
                 path: enabled_plugins
 ---
 # Service for RabbitMQ
