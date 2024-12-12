@@ -221,7 +221,7 @@ spec:
             - name: ORDER_QUEUE_USERNAME
               value: "sender"
             - name: ORDER_QUEUE_PASSWORD
-              value: ""
+              value: "E2DENIdm0+ynC0W04wsVeTbCRhath8CNf+ASbOT1SQM="
             - name: ORDER_QUEUE_TRANSPORT
               value: "tls"
             - name: ORDER_QUEUE_RECONNECT_LIMIT
