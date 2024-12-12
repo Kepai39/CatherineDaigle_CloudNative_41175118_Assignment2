@@ -160,4 +160,4 @@ I have found a solution to this error, as it turns out, the OpenAI service is de
 
 
 Youtube:  https://www.youtube.com/watch?v=8r61wzqcJmk   
-(The Video Is private I should have it shared with the algonquin email, Let me know if there is any issues.)
+(The video Is private it is shared with the professors algonquin email, Let me know if there is any issues.)
