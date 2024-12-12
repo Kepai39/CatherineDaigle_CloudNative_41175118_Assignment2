@@ -2,6 +2,11 @@
  Its the main repository that lists all the files and workflow
 
 
+# Updated Application Architecture:
+![application archetecture](Assignment2Diagram.drawio.png)
+
+
+# Application and Architecture Explanation:
 
 
 # Deployment Instructions:
@@ -97,3 +102,28 @@ Step 7: in terminal input the following when kubernetes deployed for the AI:
 
   ## How to deploy into Kubernetes:
   kubectl apply -f aps-all-in-one.yaml
+
+
+  # Table of Microservice Repositories
+| Service | Repository Link |
+| :---:   | :---: |
+| makeline-service | https://github.com/Kepai39/Catherine-Daigle-Assignment2CST8915-makeline-service | 
+| ai-service | https://github.com/Kepai39/Catherine-Daigle-Assignment2CST8915-ai-service/actions | 
+| order-service | https://github.com/Kepai39/Catherine-Daigle-Assignment2CST8915-order-service | 
+| product-service | https://github.com/Kepai39/Catherine-Daigle-Assignment2CST8915-product-service/actions/runs/12264325491 | 
+| store-admin | https://github.com/Kepai39/Catherine-Daigle-Assignment2CST8915-store-admin/actions/runs/12265613112 |
+| store-front | https://github.com/Kepai39/Catherine-Daigle-Assignment2CST8915-store-front/actions/runs/12265613839 |
+
+
+
+
+  # Table of Docker Images
+| Service | Docker Image Link |
+| :---:   | :---: |
+| makeline-service | https://hub.docker.com/layers/kepai39/catherinedaigle-a2-makeline-service/latest/images/sha256:99134a4f7dfdc98040d320cf556075abb4b3223508a702177235d601a0e1276d?uuid=eb959240-9a0e-4383-b399-16f46df8de41%0A | 
+| ai-service | https://hub.docker.com/layers/kepai39/catherinedaigle-a2-ai-service/latest/images/sha256:0dab47c8e4c30c260a3ff2fc485e933e7d9bb2ef5922557c019f694c7db2df84?uuid=eb959240-9a0e-4383-b399-16f46df8de41%0A | 
+| order-service | https://hub.docker.com/layers/kepai39/catherinedaigle-a2-order-service/latest/images/sha256:cda99c8cc46d3cfa8c780265d56f7ec80a146e0c9093c547b615b260736b273e?uuid=eb959240-9a0e-4383-b399-16f46df8de41%0A | 
+| product-service | https://hub.docker.com/layers/kepai39/catherinedaigle-a2-product-service/latest/images/sha256:b73d289e761cc3c815d7037484147f517355880393e7196e60e5b4a8c796d54d?uuid=eb959240-9a0e-4383-b399-16f46df8de41%0A | 
+| store-admin | https://hub.docker.com/layers/kepai39/catherinedaigle-a2-store-admin/latest/images/sha256:f5f8735f7665bb2480d5e7bd13b8aeb3067469b5a4d1c3d4ff12dba48fe200c7?uuid=eb959240-9a0e-4383-b399-16f46df8de41%0A |
+| store-front | https://hub.docker.com/layers/kepai39/catherinedaigle-a2store-front/latest/images/sha256:2cf2fa9fe75d385ea40fe282849a303be940feae10adebf37990ae06dd0f2401?uuid=eb959240-9a0e-4383-b399-16f46df8de41%0A |
+
