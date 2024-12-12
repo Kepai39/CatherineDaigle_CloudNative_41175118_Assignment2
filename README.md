@@ -40,6 +40,8 @@ Step2:
 - Apply the kubconfig to each KUBE_CONFIG_DATA secret in the secrets and variables.
 
 ## Setting up Azure Service Bus:
+
+## option one microsoft entra
 Step1: using Azure CLI  create the service bus:
 ```
 az login
@@ -61,6 +63,10 @@ Step 3: Get Connection Info:
 HOSTNAME=$(az servicebus namespace show --name A2ServiceBus --resource-group CloudNativeA2 --query serviceBusEndpoint -o tsv | sed 's/https:\/\///;s/:443\///')
 ```
 
+# option 2 SAS
+HOSTNAME=$(az servicebus namespace show --name A2ServiceBus  --resource-group CloudNativeA2  --query serviceBusEndpoint -o tsv | sed 's/https:\/\///;s/:443\///')
+
+PASSWORD=$(az servicebus queue authorization-rule keys list --namespace-name A2ServiceBus --resource-group CloudNativeA2 --queue-name orders --name sender --query primaryKey -o tsv)
 
 
 
