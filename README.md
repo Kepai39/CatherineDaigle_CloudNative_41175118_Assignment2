@@ -58,6 +58,7 @@ Deployment Name
 Endpoint URL
 
 Step 6: Enter the values under the AI service within the aps-all-in-one.yaml file.
+```
 - name: AZURE_OPENAI_API_VERSION
   value: "2024-07-01-preview"
 - name: AZURE_OPENAI_DEPLOYMENT_NAME
@@ -69,12 +70,15 @@ Step 6: Enter the values under the AI service within the aps-all-in-one.yaml fil
 - name: AZURE_OPENAI_DALLE_DEPLOYMENT_NAME
   value: "dalle-3-deployment"
 
-Step 7: in terminal input the following when kubernetes deployed:
+```
+
+Step 7: in terminal input the following when kubernetes deployed for the AI:
+```
   kubectl apply -f config-maps.yaml
   kubectl apply -f secrets.yaml
   kubectl get configmaps
   kubectl get secrets
-
+```
 
 
   ## How to deploy into Kubernetes:
