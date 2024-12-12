@@ -95,7 +95,7 @@ spec:
       volumes:
         - name: rabbitmq-enabled-plugins
           configMap:
-            name: rabbitmq-enabled-plugins
+            name: azure-servicebus-config
             items:
               - key: rabbitmq_enabled_plugins
                 path: enabled_plugins
