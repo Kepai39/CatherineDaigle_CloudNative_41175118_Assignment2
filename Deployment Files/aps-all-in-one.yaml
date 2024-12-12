@@ -230,12 +230,10 @@ spec:
           ports:
             - containerPort: 3001 # Makeline service listens on this port
           env: # Environment variables for configuration
-            - name: ORDER_QUEUE_URI
-              value: "amqp://rabbitmq:5672" # RabbitMQ connection string
-            - name: ORDER_QUEUE_USERNAME
-              value: "username"
-            - name: ORDER_QUEUE_PASSWORD
-              value: "password"
+            - name: USE_WORKLOAD_IDENTITY_AUTH
+              value: "true"
+            - name: AZURE_SERVICEBUS_FULLYQUALIFIEDNAMESPACE
+              value: "A2ServiceBus.servicebus.windows.net"
             - name: ORDER_QUEUE_NAME
               value: "orders"
             - name: ORDER_DB_URI
