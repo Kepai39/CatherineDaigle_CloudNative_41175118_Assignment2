@@ -140,14 +140,10 @@ spec:
           ports:
             - containerPort: 3000 # Order service listens on this port
           env: # Environment variables for configuration
-            - name: ORDER_QUEUE_HOSTNAME
-              value: "rabbitmq"
-            - name: ORDER_QUEUE_PORT
-              value: "5672"
-            - name: ORDER_QUEUE_USERNAME
-              value: "username"
-            - name: ORDER_QUEUE_PASSWORD
-              value: "password"
+            - name: USE_WORKLOAD_IDENTITY_AUTH
+              value: "true"
+            - name: AZURE_SERVICEBUS_FULLYQUALIFIEDNAMESPACE
+              value: "A2ServiceBus.servicebus.windows.net"
             - name: ORDER_QUEUE_NAME
               value: "orders"
             - name: FASTIFY_ADDRESS
