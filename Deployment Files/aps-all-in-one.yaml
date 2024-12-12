@@ -526,11 +526,11 @@ spec:
               value: "https://a2openai2.openai.azure.com/"
             - name: AZURE_OPENAI_DALLE_DEPLOYMENT_NAME
               value: "dalle-3-deployment"
-            - name: OPENAI_API_KEY # always required
+            - name: REgybXZVZnZTMWRpTDdHUU1IZEhCVTF6TXNnZ0VmbURCSjF6dmxSTjBtVUpnRzhZajlYdUpRUUo5OUFMQUNZZUJqRlhKM3czQUFBQkFDT0dPd1E0 # always required
               valueFrom:
                 secretKeyRef:
                   name: openai-api-secret
-                  key: OPENAI_API_KEY
+                  key: REgybXZVZnZTMWRpTDdHUU1IZEhCVTF6TXNnZ0VmbURCSjF6dmxSTjBtVUpnRzhZajlYdUpRUUo5OUFMQUNZZUJqRlhKM3czQUFBQkFDT0dPd1E0
           resources:
             requests:
               cpu: 20m
