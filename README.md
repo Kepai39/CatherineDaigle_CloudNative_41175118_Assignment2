@@ -156,7 +156,8 @@ Solution: I had to physically delete the config file within my computer.
 - config map isnt correct
 - connection string isnt correct
 
-I have yet to figure out a solution to this error.  It is quite odd since I was able to use AI when writing Lab8.
+I have found a solution to this error, as it turns out, the OpenAI service is depreciated and the way to have solved the error was to change the requirements.txt to httpx==0.27.2 and not just httpx.
 
 
-Youtube:  
+Youtube:  https://www.youtube.com/watch?v=8r61wzqcJmk   
+(The Video Is private I should have it shared with the algonquin email, Let me know if there is any issues.)
