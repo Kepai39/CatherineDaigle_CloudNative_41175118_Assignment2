@@ -81,6 +81,10 @@ Step 6: Enter the values under the AI service within the aps-all-in-one.yaml fil
   value: "dalle-3-deployment"
 
 ```
+Step 7:
+Copy the API key
+``` echo -n "<your-api-key>" | base64```
+Place it in API keys in secrets.yaml
 
 Step 7: in terminal input the following when kubernetes deployed for the AI:
 ```
