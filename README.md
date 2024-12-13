@@ -9,6 +9,8 @@
 # Application and Architecture Explanation:
 The Architecture above is similar to the Algonquin petstore, however the only difference being that rabbitmq is replaced with Azure Service Bus as a Queuing system.  Each service remains the same although some edits were made to fit Bestbuys aesthetic and purpose.  For example, Product Service's data.rs has been changed to feature tech products.  ai-service description_generator.py and image_generator.py was changed to fit descriptions to tech products.  The store front and store admin webpage and styles changed to fit Bestbuy.  Additionally, the yaml file and the secrets/config map had to be changed to account for the Azure service bus replacement.
 
+In the case of the architecture take note of the connections, specificifically makeline and order service.  In this case, since rabbitmq is replaced that means that both, makline service and Order service had to be updated to account for Azure service bus.  I did keep the name of order queue but in this case its managed order queue service.
+
 
 # Deployment Instructions:
 
@@ -37,7 +39,7 @@ Step1:
 ```cat ~/.kube/config | base64 -b 0 > kube_config_base64.txt``` (-b is for mac, use -w for windows)
 
 Step2: 
-- Apply the kubconfig to each KUBE_CONFIG_DATA secret in the secrets and variables.
+- Apply the kubconfig to each KUBE_CONFIG_DATA secret in the secrets and variables.  Also delete any kube config before, that caused the value too big problem.
 
 ## Setting up Azure Service Bus:
 
@@ -140,6 +142,7 @@ Step 7: in terminal input the following when kubernetes deployed for the AI:
   ## How to deploy into Kubernetes:
   kubectl apply -f aps-all-in-one.yaml
 
+ Note that this project uses the all-in-one.yaml to deploy all services at once.  In VS code I have all the services opened and saved within an overarching folder for ease of use.
 
   # Table of Microservice Repositories
 | Service | Repository Link |
