@@ -40,6 +40,9 @@ Step1:
 
 Step2: 
 - Apply the kubconfig to each KUBE_CONFIG_DATA secret in the secrets and variables.  Also delete any kube config before, that caused the value too big problem.
+- Additionally apply Docker Password and username for github secrets
+
+- Add deployment name, image name and container name to github variables.
 
 ## Setting up Azure Service Bus:
 
