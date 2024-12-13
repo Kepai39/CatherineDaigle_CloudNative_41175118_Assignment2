@@ -41,7 +41,6 @@ Step2:
 
 ## Setting up Azure Service Bus:
 
-### option one microsoft entra
 Step1: using Azure CLI  create the service bus:
 ```
 az login
@@ -49,22 +48,13 @@ az servicebus namespace create --name A2ServiceBus --resource-group CloudNativeA
 az servicebus queue create --name orders --namespace-name A2ServiceBus --resource-group CloudNativeA2
 ```
 
-Step2: Assign azure service bus sender:
-```
-PRINCIPALID=$(az ad signed-in-user show --query objectId -o tsv)
-SERVICEBUSBID=$(az servicebus namespace show --name A2ServiceBus --resource-group CloudNativeA2 --query id -o tsv)
-az role assignment create --role "Azure Service Bus Data Sender" --assignee $PRINCIPALID --scope $SERVICEBUSBID
 
-```
+### Option 2 Setting up a SAS connection, using Microsoft Entra does not work.
 
-Step 3: Get Connection Info:
-```
-HOSTNAME=$(az servicebus namespace show --name A2ServiceBus --resource-group CloudNativeA2 --query serviceBusEndpoint -o tsv | sed 's/https:\/\///;s/:443\///')
-```
-
-### option 2 SAS  (GO WITH OPTION 2, option 1 does not work)
 Step2:  getting service bus SAS passwords/connections.
 ```
+az servicebus queue authorization-rule create --name sender --namespace-name A2ServiceBus --resource-group CloudNativeA2 --queue-name orders --rights Send
+
 HOSTNAME=$(az servicebus namespace show --name A2ServiceBus  --resource-group CloudNativeA2  --query serviceBusEndpoint -o tsv | sed 's/https:\/\///;s/:443\///')
 
 PASSWORD=$(az servicebus queue authorization-rule keys list --namespace-name A2ServiceBus --resource-group CloudNativeA2 --queue-name orders --name sender --query primaryKey -o tsv)
@@ -73,6 +63,40 @@ PASSWORD=$(az servicebus queue authorization-rule keys list --namespace-name A2S
 
 Step3:
 Change the deployment .yaml file with the appropriate environment. Makeline Service should have an amqp connection string connecting it to Azure Service bus.
+
+Makeline service connection:
+```
+- name: ORDER_QUEUE_URI
+  value: "amqps://RootManageSharedAccessKey:RSeofSd2DfCjSg08sTFpD%2FfrTXlFdBwlu%2BASbMWp7t4%3D@a2servicebus.servicebus.windows.net:5671/?verify=verify_none"
+- name: ORDER_QUEUE_USERNAME
+  value: "sender"
+- name: ORDER_QUEUE_PASSWORD
+  value: "E2DENIdm0+ynC0W04wsVeTbCRhath8CNf+ASbOT1SQM="
+- name: ORDER_QUEUE_TRANSPORT
+  value: "tls"
+- name: ORDER_QUEUE_RECONNECT_LIMIT
+  value: "10"
+- name: ORDER_QUEUE_NAME
+  value: "orders"
+```
+
+Order service Connection:
+```
+- name: ORDER_QUEUE_HOSTNAME
+  value: "A2ServiceBus.servicebus.windows.net"
+- name: ORDER_QUEUE_PORT
+  value: "5671"
+- name: ORDER_QUEUE_USERNAME
+  value: "sender"
+- name: ORDER_QUEUE_PASSWORD
+  value: "E2DENIdm0+ynC0W04wsVeTbCRhath8CNf+ASbOT1SQM="
+- name: ORDER_QUEUE_TRANSPORT
+  value: "tls"
+- name: ORDER_QUEUE_RECONNECT_LIMIT
+  value: "10"
+- name: ORDER_QUEUE_NAME
+  value: "orders"
+```
 
 
 # Deploying AI
@@ -88,14 +112,15 @@ Step 6: Enter the values under the AI service within the aps-all-in-one.yaml fil
 ```
 - name: AZURE_OPENAI_API_VERSION
   value: "2024-07-01-preview"
-- name: AZURE_OPENAI_DEPLOYMENT_NAME
+- name: AZURE_OPENAI_DEPLOYMENT_NAME # required if using Azure OpenAI
   value: "gpt-4-deployment"
-- name: AZURE_OPENAI_ENDPOINT
-  value: "https://<your-openai-resource-name>.openai.azure.com/"
+- name: AZURE_OPENAI_ENDPOINT # required if using Azure OpenAI
+  value: "https://aiservicebot.openai.azure.com/"
 - name: AZURE_OPENAI_DALLE_ENDPOINT
-  value: "https://<your-openai-resource-name>.openai.azure.com/"
+  value: "https://aiservicebot.openai.azure.com/"
 - name: AZURE_OPENAI_DALLE_DEPLOYMENT_NAME
   value: "dalle-3-deployment"
+- name: OPENAI_API_KEY # always required
 
 ```
 Step 7:
